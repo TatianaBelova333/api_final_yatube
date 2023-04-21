@@ -139,7 +139,7 @@ class Follow(models.Model):
 
         """
         self.is_cleaned = True
-        if self.user == self.author:
+        if self.user == self.following:
             raise ValidationError(
                 'Пользователь не может подписаться на самого себя'
             )
@@ -147,7 +147,7 @@ class Follow(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Does not save an Follow instance if the user and the author are
+        Does not save an Follow instance if the user and the following are
         the same User instance.
 
         """
