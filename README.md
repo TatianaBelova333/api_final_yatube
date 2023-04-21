@@ -57,7 +57,7 @@ Run the project:
 python3 manage.py runserver
 ```
 
-API documentation is available at `http://127.0.0.1:8000/redoc/`
+**API documentation is available at `http://127.0.0.1:8000/redoc/` **
 
 # SOME REST API EXAMPLES
 ### Get list of Posts
