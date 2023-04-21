@@ -9,11 +9,19 @@ from posts.models import Comment, Follow, Group, Post, User
 
 
 class Base64ImageField(serializers.ImageField):
+    """
+    ImageField that takes base64 image as a string,
+    saves the image as a file and returns the file path.
+
+    """
     def to_internal_value(self, data):
         if isinstance(data, str) and data.startswith('data:image'):
             format, imgstr = data.split(';base64,')
             ext = format.split('/')[-1]
-            data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+            data = ContentFile(
+                base64.b64decode(imgstr),
+                name='images/temp.' + ext,
+            )
         return super().to_internal_value(data)
 
 
@@ -82,18 +90,17 @@ class FollowSerializer(serializers.ModelSerializer):
             )
         ]
 
-    def create(self, validated_data):
+    def validate(self, data):
         """
         Raise ValidationError if the user and the following fields
-        are the same. Create a Follow instance otherwise.
+        are the same.
 
         """
         request = self.context.get("request")
         user = request.user
-        following = validated_data.get('following')
+        following = data.get('following')
         if user == following:
             raise serializers.ValidationError(
                 detail={'following': 'Request user cannot follow himself.'}
             )
-        follow = Follow.objects.create(user=user, following=following)
-        return follow
+        return data

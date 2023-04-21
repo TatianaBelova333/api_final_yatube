@@ -47,8 +47,12 @@ class CommentViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user, post=post)
 
 
-class FollowListCreateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
-                              viewsets.GenericViewSet):
+class ListCreateViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
+                        viewsets.GenericViewSet):
+    pass
+
+
+class FollowListCreateViewSet(ListCreateViewSet):
     """
     Viewset for viewing a list of users followed by the request user
     and adding new users to the request user's subscriptions.

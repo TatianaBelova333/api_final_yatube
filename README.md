@@ -46,11 +46,18 @@ Execute migrations:
 python3 manage.py migrate
 ```
 
+Create an admin user, run the command:
+```
+python manage.py createsuperuser
+```
+
 Run the project:
 
 ```
 python3 manage.py runserver
 ```
+
+API documentation is available at `http://127.0.0.1:8000/redoc/`
 
 # SOME REST API EXAMPLES
 ### Get list of Posts
@@ -135,3 +142,5 @@ HTTP/1.1 401 Unauthorised
     "detail": "Authentication credentials were not provided."
 }
 ```
+# Authors
+[Tatiana Belova](https://github.com/TatianaBelova333)
