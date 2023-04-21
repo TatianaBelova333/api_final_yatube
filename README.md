@@ -59,7 +59,8 @@ python3 manage.py runserver
 
 
 # SOME REST API EXAMPLES
-### Complete API documentation is available at `http://127.0.0.1:8000/redoc/`
+### Complete API documentation is available at 
+`http://127.0.0.1:8000/redoc/`
 ### Get list of Posts
 
 `GET /api/v1/posts/`
