@@ -135,7 +135,7 @@ HTTP/1.1 201 Created
 }
 
 ```
-### Attempt to create a Post by an authorised user
+### Attempt to create a Post by an unauthorised user
 
 ```
 HTTP/1.1 401 Unauthorised
